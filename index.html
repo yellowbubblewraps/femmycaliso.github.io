@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Femmy Caliso — Operations Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FFFDF4;
+      --yellow:   #FFF5C2;
+      --yellow-md:#FFE97A;
+      --gold:     #C8963E;
+      --gold-dk:  #A67830;
+      --text:     #2A2A2A;
+      --muted:    #6B6B6B;
+      --border:   #EDE8D4;
+      --white:    #FFFFFF;
+      --radius:   14px;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-head: 'Fraunces', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 5%;
+      background: rgba(255,253,244,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .logo {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+    nav ul a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    nav ul a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 5% 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -80px;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, #FFE97A55 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 40px; left: -100px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, #FFF5C266 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--yellow);
+      border: 1px solid var(--yellow-md);
+      color: var(--gold-dk);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+    .hero-badge span { font-size: 1em; }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--muted);
+      font-weight: 400;
+      margin-bottom: 28px;
+      max-width: 560px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 44px;
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--gold-dk); transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
+    .hero-location {
+      position: absolute;
+      bottom: 48px; right: 5%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .hero-photo {
+      position: absolute;
+      right: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 4px solid var(--white);
+      box-shadow: 0 12px 48px rgba(200,150,62,0.18), 0 2px 8px rgba(0,0,0,0.06);
+      z-index: 1;
+    }
+    @media (max-width: 900px) {
+      .hero-photo {
+        position: static;
+        transform: none;
+        width: 120px; height: 120px;
+        margin-bottom: 24px;
+        display: block;
+      }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 90px 5%;
+    }
+    section:nth-child(even) {
+      background: var(--white);
+    }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 48px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .highlight-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .highlight-icon {
+      width: 36px; height: 36px;
+      background: var(--yellow);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .highlight-card h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
+    .highlight-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── STRENGTHS ── */
+    .strengths-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .strength-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .strength-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .strength-num {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--yellow-md);
+      margin-bottom: 8px;
+      line-height: 1;
+    }
+    .strength-card h3 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    /* ── TOOLS ── */
+    .tools-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .tool-category {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tool-cat-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .tool-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .tag:hover {
+      background: var(--yellow);
+      border-color: var(--yellow-md);
+      color: var(--gold-dk);
+    }
+
+    /* ── CASE STUDIES ── */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .case-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+    .case-card:hover {
+      box-shadow: 0 8px 32px rgba(200,150,62,0.12);
+      transform: translateY(-3px);
+    }
+    .case-header {
+      padding: 28px 28px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .case-tag {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--gold-dk);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .case-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .case-card .case-context {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .case-body {
+      padding: 22px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .case-block h4 {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 7px;
+    }
+    .case-block p, .case-block ul {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .case-block ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .case-block ul li {
+      padding-left: 14px;
+      position: relative;
+    }
+    .case-block ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.78rem;
+    }
+    .case-footer {
+      padding: 16px 28px;
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .case-pill {
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--gold-dk);
+      background: var(--yellow);
+      border-radius: 100px;
+      padding: 4px 12px;
+    }
+    .case-stats {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+    .case-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .stat-num {
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px; top: 6px; bottom: 6px;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item {
+      padding-left: 52px;
+      padding-bottom: 44px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: 8px; top: 6px;
+      width: 15px; height: 15px;
+      background: var(--yellow-md);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+    }
+    .timeline-item.current .timeline-dot {
+      background: var(--gold);
+    }
+    .timeline-period {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .timeline-role {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      margin-bottom: 4px;
+    }
+    .timeline-company {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .timeline-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .timeline-list li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .timeline-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .edu-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .edu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+    }
+    .edu-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .edu-card p {
+      font-size: 0.83rem;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--text);
+      color: var(--white);
+      text-align: center;
+    }
+    #contact .section-label { color: var(--yellow-md); }
+    #contact .section-title { color: var(--white); margin-bottom: 16px; }
+    #contact .section-title em { color: var(--yellow-md); }
+    #contact > p {
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 44px;
+      font-size: 1rem;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .contact-links {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .contact-link:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #fff;
+    }
+    .footer-note {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+    }
+
+    /* ── SVG ICONS ── */
+    .icon { width: 16px; height: 16px; display: inline-block; vertical-align: middle; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.8rem; }
+      .timeline::before { left: 8px; }
+      .timeline-item { padding-left: 36px; }
+      .timeline-dot { left: 1px; }
+    }
+
+    /* ── FADE IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">Femmy Caliso</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#strengths">Strengths</a></li>
+      <li><a href="#work">Case Studies</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge"><span>📍</span> Cebu City, Philippines</div>
+    <h1>Femmy<br><em>Caliso</em></h1>
+    <p class="hero-sub">Operations Specialist · Systems &amp; Automation · Health Tech</p>
+    <p class="hero-desc">
+      Building structure inside fast-moving, early-stage teams. I design systems, automations, and workflows that improve execution, reduce manual work, and scale customer operations.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/><polyline points="20,6 12,13 4,6"/></svg>
+        Get in Touch
+      </a>
+      <a href="https://www.linkedin.com/in/femmy-caliso/" target="_blank" class="btn btn-outline">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <img src="femmy.jpg" alt="Femmy Caliso" class="hero-photo" />
+    <div class="hero-location">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+      Available for remote &amp; async work
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="fade-in">
+      <p class="section-label">About</p>
+      <h2 class="section-title">Creating clarity<br>in <em>complex environments</em></h2>
+    </div>
+    <div class="about-grid fade-in">
+      <div class="about-text">
+        <p>
+          I'm an Operations Specialist with a background that spans healthcare, health tech, and digital businesses. I step into ambiguous environments and build the systems, processes, and workflows that turn chaos into momentum.
+        </p>
+        <p>
+          My experience bridges clinical and startup worlds — giving me a rare ability to translate complex, cross-functional processes into clear, repeatable systems across product, support, and operations.
+        </p>
+        <p>
+          Known for creating accountability and clarity where there was none, I work best with early-stage teams ready to scale.
+        </p>
+      </div>
+      <div class="about-highlights">
+        <div class="highlight-card">
+          <div class="highlight-icon">⚙️</div>
+          <div>
+            <h4>Systems Builder</h4>
+            <p>I design workflows from scratch — CRMs, ticketing systems, automations, and SOPs that your team can actually use.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🏥</div>
+          <div>
+            <h4>Health Tech Background</h4>
+            <p>Deep experience working alongside clinicians and product teams in regulated, high-stakes digital health environments.</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon">🌐</div>
+          <div>
+            <h4>Remote-First Operator</h4>
+            <p>Experienced collaborating across remote, international teams with a strong bias toward async communication and documentation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section id="strengths">
+    <div class="fade-in">
+      <p class="section-label">Core Strengths</p>
+      <h2 class="section-title">What I <em>bring</em><br>to the table</h2>
+    </div>
+    <div class="strengths-grid fade-in">
+      <div class="strength-card">
+        <div class="strength-num">01</div>
+        <h3>Product Operations &amp; Process Optimization</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">02</div>
+        <h3>Support &amp; Feedback Loop Management</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">03</div>
+        <h3>Issue Investigation &amp; Root Cause Analysis</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">04</div>
+        <h3>SQL Data Querying &amp; Dashboard Development</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">05</div>
+        <h3>Workflow, Playbook &amp; Documentation Design</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">06</div>
+        <h3>Automation &amp; Integration Workflows</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">07</div>
+        <h3>Cross-functional Collaboration with Product, Engineering &amp; Design</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">08</div>
+        <h3>Rollout Readiness &amp; User Guidance</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">09</div>
+        <h3>Operational Signal Synthesis</h3>
+      </div>
+      <div class="strength-card">
+        <div class="strength-num">10</div>
+        <h3>Vendor &amp; Partner Coordination</h3>
+      </div>
+    </div>
+
+    <!-- TOOLS -->
+    <div style="margin-top: 72px;" class="fade-in">
+      <p class="section-label">Tools &amp; Platforms</p>
+      <h2 class="section-title" style="margin-bottom: 36px;">My <em>toolkit</em></h2>
+      <div class="tools-wrapper">
+        <div class="tool-category">
+          <span class="tool-cat-label">Data &amp; Analytics</span>
+          <div class="tool-tags">
+            <span class="tag">SQL</span>
+            <span class="tag">BigQuery</span>
+            <span class="tag">Amplitude</span>
+            <span class="tag">Google Sheets</span>
+            <span class="tag">Stripe (data)</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <span class="tool-cat-label">Ticketing &amp; CRM</span>
+          <div class="tool-tags">
+            <span class="tag">Zendesk</span>
+            <span class="tag">Intercom</span>
+            <span class="tag">Jira</span>
+            <span class="tag">ClickUp</span>
+            <span class="tag">Asana</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <span class="tool-cat-label">Automation &amp; Integrations</span>
+          <div class="tool-tags">
+            <span class="tag">Zapier</span>
+            <span class="tag">Make (Integromat)</span>
+            <span class="tag">n8n</span>
+            <span class="tag">API-based integrations</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <span class="tool-cat-label">Collaboration &amp; Product</span>
+          <div class="tool-tags">
+            <span class="tag">Slack</span>
+            <span class="tag">Notion</span>
+            <span class="tag">Trello</span>
+            <span class="tag">Google Workspace</span>
+            <span class="tag">Calendly</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Miro</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <span class="tool-cat-label">Marketing &amp; Design</span>
+          <div class="tool-tags">
+            <span class="tag">Mailgun</span>
+            <span class="tag">Mailchimp</span>
+            <span class="tag">Canva</span>
+          </div>
+        </div>
+        <div class="tool-category">
+          <span class="tool-cat-label">AI Productivity</span>
+          <div class="tool-tags">
+            <span class="tag">ChatGPT</span>
+            <span class="tag">Claude</span>
+            <span class="tag">Gemini</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="work">
+    <div class="fade-in">
+      <p class="section-label">Case Studies</p>
+      <h2 class="section-title">Problems I've<br><em>solved at Aspect Health</em></h2>
+    </div>
+    <div class="cases-grid fade-in">
+
+      <!-- CASE 1 -->
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-tag">Customer Support</span>
+          <h3>Building a Support System from Zero</h3>
+          <p class="case-context">Aspect Health · 2024</p>
+        </div>
+        <div class="case-body">
+          <div class="case-block">
+            <h4>The Problem</h4>
+            <p>Customer support was entirely fragmented — emails landed in inboxes, replies were manual, and there was no shared visibility into open issues, response times, or recurring patterns.</p>
+          </div>
+          <div class="case-block">
+            <h4>What I Did</h4>
+            <ul>
+              <li>Implemented Zendesk as the company's first centralized ticketing system</li>
+              <li>Designed ticket routing rules, macros, and automated workflows to triage and respond faster</li>
+              <li>Consolidated all support channels (email, ad hoc replies) into one unified queue</li>
+              <li>Built internal knowledge base documentation so every agent could respond consistently</li>
+            </ul>
+          </div>
+          <div class="case-block">
+            <h4>The Impact</h4>
+            <p>Transformed a chaotic inbox into a structured support operation — improving context tracking, response efficiency, and team onboarding speed.</p>
+          </div>
+        </div>
+        <div class="case-footer">
+          <span class="case-pill">Zendesk</span>
+          <span class="case-pill">Workflow Design</span>
+          <span class="case-pill">Documentation</span>
+        </div>
+      </div>
+
+      <!-- CASE 2 -->
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-tag">Platform Migration</span>
+          <h3>Migrating Support from Zendesk to Intercom</h3>
+          <p class="case-context">Aspect Health · 2025</p>
+        </div>
+        <div class="case-body">
+          <div class="case-block">
+            <h4>The Problem</h4>
+            <p>Zendesk couldn't support the real-time, in-app experience the product needed. Users couldn't get help inside the platform, and seat costs were becoming a scaling problem.</p>
+          </div>
+          <div class="case-block">
+            <h4>What I Did</h4>
+            <ul>
+              <li>Led the full migration from Zendesk to Intercom — scoping, setup, and team transition</li>
+              <li>Built an in-app support workflow with smart routing (bug reports, billing, general support) and an automated offline response flow</li>
+              <li>Restructured agent seat usage and implemented shared workflows to control costs</li>
+              <li>Rebuilt macros, routing logic, and knowledge base content in the new system</li>
+            </ul>
+          </div>
+          <div class="case-block">
+            <h4>The Impact</h4>
+            <div class="case-stats">
+              <div class="case-stat"><span class="stat-num">1,342</span><span class="stat-label">Users reached</span></div>
+              <div class="case-stat"><span class="stat-num">100%</span><span class="stat-label">Engagement rate</span></div>
+              <div class="case-stat"><span class="stat-num">437</span><span class="stat-label">Flows completed</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="case-footer">
+          <span class="case-pill">Intercom</span>
+          <span class="case-pill">Cost Reduction</span>
+          <span class="case-pill">System Migration</span>
+        </div>
+      </div>
+
+      <!-- CASE 3 -->
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-tag">Automation</span>
+          <h3>Automating Payment Recovery Workflows</h3>
+          <p class="case-context">Aspect Health · 2025</p>
+        </div>
+        <div class="case-body">
+          <div class="case-block">
+            <h4>The Problem</h4>
+            <p>Outstanding payments were being chased manually — support agents were spending time on follow-ups that had nothing to do with support, and customers had no self-serve path to resolve them.</p>
+          </div>
+          <div class="case-block">
+            <h4>What I Did</h4>
+            <ul>
+              <li>Designed an automated reminder flow triggered on outstanding payment events</li>
+              <li>Built customer-facing payment links embedded directly in reminder messages</li>
+              <li>Removed manual follow-up steps from the support team's queue entirely</li>
+              <li>Documented the process so the team could maintain and iterate on it</li>
+            </ul>
+          </div>
+          <div class="case-block">
+            <h4>The Impact</h4>
+            <p>Customers could resolve payments on their own. Manual follow-ups dropped significantly, freeing up support capacity for actual customer issues.</p>
+          </div>
+        </div>
+        <div class="case-footer">
+          <span class="case-pill">Automation</span>
+          <span class="case-pill">Intercom</span>
+          <span class="case-pill">Process Design</span>
+        </div>
+      </div>
+
+      <!-- CASE 4 -->
+      <div class="case-card">
+        <div class="case-header">
+          <span class="case-tag">Automation</span>
+          <h3>CSAT Visibility Bot: Intercom → Slack via n8n</h3>
+          <p class="case-context">Aspect Health · 2025</p>
+        </div>
+        <div class="case-body">
+          <div class="case-block">
+            <h4>The Problem</h4>
+            <p>Customer satisfaction ratings were buried inside Intercom. The team had no real-time visibility into how support was performing, and there was no shared space for the team to react and improve.</p>
+          </div>
+          <div class="case-block">
+            <h4>What I Did</h4>
+            <ul>
+              <li>Built an n8n workflow that listens for CSAT submissions in Intercom</li>
+              <li>Routed each rating (score + comment + customer ID + timestamp) to a dedicated Slack channel in real time</li>
+              <li>Structured the notification format for quick scanning — star rating, comment, and context in one message</li>
+              <li>Created a shared feedback loop so the whole team could see and act on satisfaction trends</li>
+            </ul>
+          </div>
+          <div class="case-block">
+            <h4>The Impact</h4>
+            <p>The team went from zero visibility to a live CSAT feed in Slack — making support quality a shared, visible metric rather than a number buried in a dashboard nobody checked.</p>
+          </div>
+        </div>
+        <div class="case-footer">
+          <span class="case-pill">n8n</span>
+          <span class="case-pill">Intercom</span>
+          <span class="case-pill">Slack</span>
+          <span class="case-pill">CSAT</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="fade-in">
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Where I've<br><em>made an impact</em></h2>
+    </div>
+    <div class="timeline fade-in">
+
+      <div class="timeline-item current">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">March 2026 — Present</p>
+        <h3 class="timeline-role">Operations &amp; Project Manager (Fractional)</h3>
+        <p class="timeline-company">Kalaidoscope · Marketing Agency</p>
+        <ul class="timeline-list">
+          <li>Build and maintain operational trackers, templates, and workflow systems; identify process gaps and drive improvements to reduce manual overhead</li>
+          <li>Support founder with structured updates, issue management, and stakeholder communication across active engagements</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">July 2024 — March 2026</p>
+        <h3 class="timeline-role">Operations &amp; Customer Success Manager</h3>
+        <p class="timeline-company">Aspect Health · Health Tech Startup</p>
+        <ul class="timeline-list">
+          <li>Inherited fragmented support inputs (Typeform, email, ad hoc) and designed a centralized pipeline — Typeform → Google Sheets → Jira → Notion, turning scattered signals into a traceable, queryable system</li>
+          <li>Investigated recurring issues across support tickets, onboarding flows, and product usage (device incompatibilities, onboarding drop-offs, billing confusion) — translating findings into product fixes, workflow changes, and updated user guidance</li>
+          <li>Built operational structures across the team: knowledge bases, macros, playbooks, templates, and escalation workflows enabling consistent, scalable support</li>
+          <li>Collaborated cross-functionally with product, engineering, and design — translating user and operational signals into requirements each function could act on</li>
+          <li>Implemented automated payment reminder workflows with self-serve resolution links, eliminating a recurring category of manual support tickets</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">April 2022 — October 2022</p>
+        <h3 class="timeline-role">Case Associate</h3>
+        <p class="timeline-company">The Accident Guys (Dayan Houman Law)</p>
+        <ul class="timeline-list">
+          <li>Managed case documentation, communications, and legal records across active personal injury matters</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Jan 2019 — Present</p>
+        <h3 class="timeline-role">Independent Operations Support</h3>
+        <p class="timeline-company">Freelance · Healthcare, Legal &amp; Education</p>
+        <ul class="timeline-list">
+          <li>Provided ad hoc operational and administrative support across small businesses in healthcare, legal, and education sectors</li>
+          <li>Worked across research, documentation, client communication, and process support — often in unstructured environments with minimal direction</li>
+          <li>Ongoing engagement covering periods between formal roles, including Oct 2022 – July 2024</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Jan 2020 — Jan 2022</p>
+        <h3 class="timeline-role">Associate, Office of Strategy Management</h3>
+        <p class="timeline-company">Department of Health · Western Visayas, Philippines</p>
+        <ul class="timeline-list">
+          <li>Managed a national-scale data pipeline under COVID-19: validated inputs from nurses and community health workers, identified inconsistencies, aggregated across regions, and prepared weekly national health reports for senior leadership</li>
+          <li>Wrote health bulletins; supported UHC implementation coordinating across health facilities to deliver national operational visibility</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">Aug 2019 — Jan 2020</p>
+        <h3 class="timeline-role">Public Health Associate</h3>
+        <p class="timeline-company">Department of Health · Western Visayas, Philippines</p>
+        <ul class="timeline-list">
+          <li>Led data collection and reporting for national health indicators</li>
+          <li>Trained field personnel on survey implementation and reporting processes</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <p class="timeline-period">March 2018 — Present</p>
+        <h3 class="timeline-role">Medical Laboratory Technologist</h3>
+        <p class="timeline-company">Various Healthcare Units · Freelance / On-Call</p>
+        <ul class="timeline-list">
+          <li>Clinical diagnostics in regulated healthcare settings; familiar with medical documentation and healthcare compliance standards</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="fade-in">
+      <p class="section-label">Education &amp; Qualifications</p>
+      <h2 class="section-title">Academic<br><em>foundation</em></h2>
+    </div>
+    <div class="edu-grid fade-in">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <h3>BS Public Health</h3>
+        <p>University of the Philippines Visayas · Miagao, Iloilo · Class of 2017</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🏅</div>
+        <h3>Registered Medical Technologist</h3>
+        <p>Licensed since March 2018 · Professional Regulations Commission of the Philippines</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">Let's work<br><em>together</em></h2>
+    <p>Open to remote operations roles, fractional engagements, and freelance projects. Let's talk.</p>
+    <div class="contact-links">
+      <a href="mailto:connect.femc@gmail.com" class="contact-link">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2z"/><polyline points="20,6 12,13 4,6"/></svg>
+        connect.femc@gmail.com
+      </a>
+      <a href="https://wa.me/639218156973" target="_blank" class="contact-link">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        WhatsApp
+      </a>
+      <a href="https://www.linkedin.com/in/femmy-caliso/" target="_blank" class="contact-link">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <p class="footer-note">© 2026 Femmy Caliso · Cebu City, Philippines · Available for remote work worldwide</p>
+  </section>
+
+  <script>
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
